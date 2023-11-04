@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin: 0;
+}
+.encabezado {
+  height: 200px;
+  background-color: darkslategrey;
+}
+
+.titulo {
+  color: red;
+}
+
+.parrafo {
+  font-size: 16px;
+  color: chocolate;
+  font-weight: 600;
+}
+
+.boton {
+  height: 30px;
+  width: 150px;
+  background-color: rgba(80, 255, 238, 0.516);
+}
