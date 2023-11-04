@@ -42,15 +42,6 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: gatsby
-      - name: Restore cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            public
-            .cache
-          key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
-          restore-keys: |
-            ${{ runner.os }}-gatsby-build-
   # Deployment job
   deploy:
     environment:
