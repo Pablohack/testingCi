@@ -1,41 +1,35 @@
-# Sample workflow for building and deploying a Gatsby site to GitHub Pages
-#
-# To get started with Gatsby see: https://www.gatsbyjs.com/docs/quick-start/
-#
-name: Deploy Gatsby site to Pages
+name: CI
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-# Default to bash
-defaults:
-  run:
-    shell: bash
+    branches:
+      - master
 
 jobs:
   build:
-    runs-on: ubuntu-latest # Docker-based github actions have to run on a linux environment
+    runs-on: ubuntu-latest
+
     steps:
-      - name: HTML/CSS/JS Minifier
-        uses: docker://devatherock/minify-js:2.0.0
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          directory: "/" # Optional
-          output: "minify/src" # Optional
-          add_suffix: false # Optional
+          node-version: "14"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: |
+          # Agrega aquí comandos para minificar o compilar tu código si es necesario
+          # Por ejemplo, puedes usar herramientas como UglifyJS para JavaScript y PostCSS para CSS.
+
+      - name: Run Tests (si tienes)
+        run: |
+          # Agrega aquí comandos para ejecutar pruebas si es necesario
+
+      - name: Deploy (si es necesario)
+        run: |
+          # Agrega aquí comandos para implementar tu aplicación si es necesario
