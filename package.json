@@ -1,0 +1,24 @@
+{
+  "name": "ejercicioweb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pablohack/testingCi.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pablohack/testingCi/issues"
+  },
+  "homepage": "https://github.com/Pablohack/testingCi#readme",
+  "dependencies": {
+    "eslint": "^8.53.0",
+    "prettier": "^3.0.3"
+  }
+}

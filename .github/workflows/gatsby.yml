@@ -1,35 +1,35 @@
 name: CI
 
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches:
-      - master
+    branches: [main]
+  pull_request:
+    branches: [master]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  test:
+    name: Test
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "15.14.0"
+          cache: "npm"
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
+        env:
+          CI: true
 
-      - name: Build
-        run: |
-          # Agrega aquí comandos para minificar o compilar tu código si es necesario
-          # Por ejemplo, puedes usar herramientas como UglifyJS para JavaScript y PostCSS para CSS.
+      - name: Run esLint
+        run: npm run lint
 
-      - name: Run Tests (si tienes)
-        run: |
-          # Agrega aquí comandos para ejecutar pruebas si es necesario
-
-      - name: Deploy (si es necesario)
-        run: |
-          # Agrega aquí comandos para implementar tu aplicación si es necesario
+      - name: Run prettier
+        run: npm run prettier
